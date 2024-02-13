@@ -18,6 +18,8 @@ export default function Home() {
     'Just kidding, PLEASE SAY YES',
     "You're breaking my heart ;(",
   ];
+
+  const phrasesImg = ['/bear-kiss-bear-kisses.gif', '/thang.jpg'];
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
   const yesButtonSize = noCount * 20 + 16;
@@ -28,6 +30,10 @@ export default function Home() {
   const getNoButtonText = () => {
     const index = noCount % phrases.length;
     return phrases[index];
+  };
+
+  const getNoImg = () => {
+    return phrasesImg[Math.min(noCount, phrasesImg.length - 1)];
   };
   console.log(
     '%cđược thực hiện bởi chuyên gia, không khuyến cáo bắt trước làm theo dưới mọi hình thức',
@@ -45,7 +51,7 @@ export default function Home() {
       ) : (
         <div className='bear-with-heart'>
           <div className='flex justify-center'>
-            <img src='/cute-love-bear-roses.gif' width={300} height={300} />
+            <img src={getNoImg()} width={300} height={300} />
           </div>
           <h4 className='text-3xl text-center pb-5'>
             Will you be my Valentine?
